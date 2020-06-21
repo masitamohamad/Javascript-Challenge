@@ -71,7 +71,6 @@ data.forEach((UFOSighting) => {
 ///////////////////////////////////////////////////////////////////////////////////
 // Event Listeners
 
-
 // Select the button
 // Select the input element and get the raw HTML node
 // Get the value property of the input element
@@ -81,12 +80,33 @@ data.forEach((UFOSighting) => {
 var button = d3.select("#filter-btn");
 
 button.on("click",function () {
-  var inputElement = d3.select("#datetime");
-  var inputValue = inputElement.property("value");
-  console.log(inputValue);
-  // console.log(tableData);
+  var inputDateElement = d3.select("#datetime");
+  var inputDateValue = inputDateElement.property("value");
+  console.log(inputDateValue);
 
-  var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
+  var inputCityElement = d3.select("#city");
+  var inputCityValue = inputCityElement.property("value");
+  console.log(inputCityValue);
+
+  var inputStateElement = d3.select("#state");
+  var inputStateValue = inputStateElement.property("value");
+  console.log(inputStateValue);
+
+  var inputCountryElement = d3.select("#countrySelect");
+  var inputCountryValue = inputCountryElement.property("value");
+  console.log(inputCountryValue);
+
+  var inputShapeElement = d3.select("#shapeSelect");
+  var inputShapeValue = inputShapeElement.property("value");
+  console.log(inputShapeValue);
+
+  var filteredData = tableData.filter(tableData => 
+    tableData.datetime === inputDateValue 
+    && tableData.city === inputCityValue
+    && tableData.state === inputStateValue
+    && tableData.country === inputCountryValue
+    && tableData.shape === inputShapeValue);
+
   console.log(filteredData);
 
   var tbody = d3.select("tbody");
